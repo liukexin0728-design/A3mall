@@ -53,7 +53,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          # 核心修改：添加 /n:"project0225"（项目名称），并修改 /k: 后的项目Key
-          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"liukexin0728-design_project0225" /n:"project0225" /o:"liukexin0728-design" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          # 核心修改：仅保留 /n:"project0225"（项目名称），恢复原项目Key避免生成新项目
+          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"liukexin0728-design_a3mall" /n:"project0225" /o:"liukexin0728-design" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
           dotnet build
           ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
